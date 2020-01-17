@@ -1,0 +1,13 @@
+<?php
+
+
+namespace $NAMESPACE$;
+
+
+use App\Infrastructure\Providers\EventModuleServiceProvider;
+
+class $CLASS$ extends EventModuleServiceProvider
+{
+    # Preencher com os listeners do módulo
+    protected $listen = [];
+}

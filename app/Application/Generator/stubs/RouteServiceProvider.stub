@@ -1,0 +1,17 @@
+<?php
+
+
+namespace $NAMESPACE$;
+
+use App\Infrastructure\Providers\RouteModuleServiceProvider;
+
+class $CLASS$ extends RouteModuleServiceProvider
+{
+    # Preenhcer com o namespace dos controllers do módulo
+    protected $namespace = '$CONTROLLERS_NAMESPACE$';
+    protected $routeFilePath = __DIR__ . '/../Http/routes.php';
+    # Preencher com o prefixo das urls do módulo
+    protected $prefix = '$MODULE_NAME$';
+    # Preencher com os middlewares das rotas do módulo
+    protected $middlewares = [];
+}
