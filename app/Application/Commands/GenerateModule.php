@@ -95,9 +95,9 @@ class GenerateModule extends Command
                 ],
                 [
                     $moduleName . $stub,
-                    'App\\Module\\' . $moduleName . '\\' . $path,
+                    'App\\Domain\\' . $moduleName . '\\' . $path,
                     lcfirst($moduleName),
-                    'App\\Module\\' . $moduleName . '\\Http\\Controllers',
+                    'App\\Domain\\' . $moduleName . '\\Http\\Controllers',
                     $moduleName,
                 ],
                 $stubFile

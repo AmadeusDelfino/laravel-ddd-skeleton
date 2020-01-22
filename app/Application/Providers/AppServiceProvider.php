@@ -2,6 +2,7 @@
 
 namespace App\Application\Providers;
 
+use App\Application\Commands\GenerateMigration;
 use App\Application\Commands\GenerateModule;
 use Illuminate\Support\ServiceProvider;
 
@@ -27,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 GenerateModule::class,
+                GenerateMigration::class,
             ]);
         }
     }

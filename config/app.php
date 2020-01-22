@@ -166,8 +166,6 @@ return [
          * Package Service Providers...
          */
         \App\Domain\Foo\Providers\FooServiceProvider::class,
-        \App\Module\Auth\Providers\AuthServiceProvider::class,
-        \App\Module\Acl\Providers\AclServiceProvider::class,
 
         /*
          * Application Service Providers...
