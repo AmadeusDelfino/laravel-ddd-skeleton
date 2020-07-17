@@ -4,6 +4,8 @@
 namespace App\Infrastructure\Controllers;
 
 use App\Application\Exceptions\ServiceControllerNotExists;
+use App\Infrastructure\Responses\HttpResponse;
+use App\Infrastructure\Services\ServiceHttpLayer;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -15,12 +17,23 @@ abstract class Controller extends BaseController
 
     protected $service;
 
+    /**
+     * Controller constructor.
+     * @throws ServiceControllerNotExists
+     */
     public function __construct()
     {
-        if (!interface_exists($this->service)) {
+        if (!class_exists($this->service)) {
             throw new ServiceControllerNotExists($this->service);
         }
 
-        $this->service = app($this->service);
+        $this->service = new ServiceHttpLayer($this->service);
+    }
+
+    public function response(HttpResponse $response)
+    {
+        return response()
+            ->setStatusCode($response->getHttpCode())
+            ->json($response->getData());
     }
 }

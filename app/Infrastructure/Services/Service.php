@@ -18,8 +18,12 @@ abstract class Service
      */
     public function __call($name, $arguments)
     {
-        if (!key_exists($name, $this->handlers)) {
+        if (!array_key_exists($name, $this->handlers)) {
             throw new ServiceHandlerNotFound('Service handler not found: ' . $name);
+        }
+
+        if(!is_callable($this->handlers[$name])) {
+            throw new \RuntimeException('Service handler ' . $name . ' is not callable');
         }
 
         return (new $this->handlers[$name])(...$arguments);
