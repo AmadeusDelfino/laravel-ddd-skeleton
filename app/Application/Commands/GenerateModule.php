@@ -57,17 +57,21 @@ class GenerateModule extends Command
         return is_dir($this->getDomainsPath() . '/' . ($moduleName));
     }
 
-    protected function createDefaultStructureDirectories($module, $folders = null)
+    protected function createDefaultStructureDirectories($module, $folders = null): void
     {
         foreach ($this->defaultFolders as $folder) {
-            mkdir($this->getDomainsPath() . '/' . ucfirst($module) . '/' . $folder);
+            if (!mkdir($concurrentDirectory = $this->getDomainsPath() . '/' . ucfirst($module) . '/' . $folder) && !is_dir($concurrentDirectory)) {
+                throw new \RuntimeException(sprintf('Directory "%s" was not created', $concurrentDirectory));
+            }
         }
 
     }
 
     protected function createModuleDirectory($module)
     {
-        mkdir($this->getDomainsPath() . '/' . ucfirst($module));
+        if (!mkdir($concurrentDirectory = $this->getDomainsPath() . '/' . ucfirst($module)) && !is_dir($concurrentDirectory)) {
+            throw new \RuntimeException(sprintf('Directory "%s" was not created', $concurrentDirectory));
+        }
     }
 
     protected function getDomainsPath()
@@ -80,7 +84,7 @@ class GenerateModule extends Command
         return app_path('Application/Generator/stubs/' . $stub . '.stub');
     }
 
-    protected function createDefaultClasses(string $moduleName)
+    protected function createDefaultClasses(string $moduleName): void
     {
         foreach ($this->defaultClassStubs as $stub => $path) {
             $realFile = $this->getDomainsPath() . '/' . $moduleName . '/' . $path . '/' . $moduleName . $stub . '.php';
@@ -107,7 +111,7 @@ class GenerateModule extends Command
         }
     }
 
-    protected function createDefaultFiles(string $moduleName)
+    protected function createDefaultFiles(string $moduleName): void
     {
         foreach ($this->defaultFileStubs as $stub => $path) {
             if(empty($path)) {
