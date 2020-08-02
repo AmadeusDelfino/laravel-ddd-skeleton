@@ -36,6 +36,7 @@ class GenerateModule extends Command
         'Requests',
         'Services',
         'Translations',
+        'Http/Middleware',
     ];
 
     public function handle()

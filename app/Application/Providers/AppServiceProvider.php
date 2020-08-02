@@ -2,6 +2,7 @@
 
 namespace App\Application\Providers;
 
+use App\Application\Commands\GenerateMiddleware;
 use App\Application\Commands\GenerateMigration;
 use App\Application\Commands\GenerateModule;
 use Illuminate\Support\ServiceProvider;
@@ -29,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
             $this->commands([
                 GenerateModule::class,
                 GenerateMigration::class,
+                GenerateMiddleware::class,
             ]);
         }
     }

@@ -15,6 +15,7 @@ abstract class Service
      * @param $arguments
      * @return  mixed
      * @throws ServiceHandlerNotFound
+     * @throws \RuntimeException
      */
     public function __call($name, $arguments)
     {
@@ -22,7 +23,7 @@ abstract class Service
             throw new ServiceHandlerNotFound('Service handler not found: ' . $name);
         }
 
-        if(!is_callable($this->handlers[$name])) {
+        if(!method_exists($this->handlers[$name], '__invoke')) {
             throw new \RuntimeException('Service handler ' . $name . ' is not callable');
         }
 

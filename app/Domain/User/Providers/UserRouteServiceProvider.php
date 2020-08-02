@@ -3,6 +3,7 @@
 
 namespace App\Domain\User\Providers;
 
+use App\Domain\User\Http\Middleware\AuthenticatedMiddleware;
 use App\Infrastructure\Providers\RouteModuleServiceProvider;
 
 class UserRouteServiceProvider extends RouteModuleServiceProvider
@@ -11,7 +12,9 @@ class UserRouteServiceProvider extends RouteModuleServiceProvider
     protected $namespace = 'App\Domain\User\Http\Controllers';
     protected $routeFilePath = __DIR__ . '/../Http/routes.php';
     # Preencher com o prefixo das urls do módulo
-    protected $prefix = 'user';
+    protected $prefix = 'users';
     # Preencher com os middlewares das rotas do módulo
-    protected $middlewares = [];
+    protected $middlewares = [
+        'auth' => AuthenticatedMiddleware::class,
+    ];
 }

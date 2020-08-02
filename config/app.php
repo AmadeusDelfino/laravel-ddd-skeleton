@@ -165,7 +165,6 @@ return [
         /*
          * Package Service Providers...
          */
-        \App\Domain\Match\Providers\MatchServiceProvider::class,
         \App\Domain\User\Providers\UserServiceProvider::class,
 
         /*
