@@ -1,0 +1,19 @@
+<?php
+
+
+namespace $NAMESPACE$;
+
+use Illuminate\Console\Command;
+
+class $COMMAND_NAME$ extends Command
+{
+    protected $signature = '<add signature> {<param1>} {<param2>}';
+
+    protected $description = '<Description>';
+
+    public function handle()
+    {
+        // Code here
+    }
+}
+

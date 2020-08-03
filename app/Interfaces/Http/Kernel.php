@@ -9,6 +9,7 @@ use App\Application\Middlewares\RedirectIfAuthenticated;
 use App\Application\Middlewares\TrimStrings;
 use App\Application\Middlewares\TrustProxies;
 use App\Application\Middlewares\VerifyCsrfToken;
+use App\Domain\User\Http\Middleware\AuthenticatedMiddleware;
 use Illuminate\Auth\Middleware\AuthenticateWithBasicAuth;
 use Illuminate\Auth\Middleware\Authorize;
 use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
@@ -72,7 +73,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => Authenticate::class,
+        'auth' => AuthenticatedMiddleware::class,
         'auth.basic' => AuthenticateWithBasicAuth::class,
         'bindings' => SubstituteBindings::class,
         'cache.headers' => SetCacheHeaders::class,

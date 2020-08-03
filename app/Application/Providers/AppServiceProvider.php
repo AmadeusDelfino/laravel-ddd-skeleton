@@ -2,6 +2,7 @@
 
 namespace App\Application\Providers;
 
+use App\Application\Commands\GenerateCommand;
 use App\Application\Commands\GenerateMiddleware;
 use App\Application\Commands\GenerateMigration;
 use App\Application\Commands\GenerateModule;
@@ -31,6 +32,7 @@ class AppServiceProvider extends ServiceProvider
                 GenerateModule::class,
                 GenerateMigration::class,
                 GenerateMiddleware::class,
+                GenerateCommand::class,
             ]);
         }
     }

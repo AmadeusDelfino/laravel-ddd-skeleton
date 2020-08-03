@@ -9,7 +9,6 @@ use App\Domain\User\Models\User;
 use App\Domain\User\Services\Core\TokenService;
 use App\Infrastructure\Services\Handlers\BaseHandler;
 use Illuminate\Support\Facades\Hash;
-use TheSeer\Tokenizer\Token;
 
 class LoginHandler extends BaseHandler
 {
